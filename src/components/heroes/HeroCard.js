@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export const HeroCard = ({ // para recibir todas estas propiedades de manera que no se alargue el cod: ver HerloList
     id,
@@ -10,12 +11,26 @@ export const HeroCard = ({ // para recibir todas estas propiedades de manera que
   }) => {
   
     return (
-      <div className="card ms-3" style = {{padding: 10, maxWidth: 540}}>
-        <div className="row no-gutters">
-          <img src={ `./assets/heroes/${ id }.jpg` } className="card-img-top" alt={ superhero } />
-          <div className="card-body">
-            <h5 className="card-title">Card title</h5>
-            <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <div className = "card ms-3" style = { {maxWidth:540} }>
+        <div className = "row no-gutters">
+          <div className = "col-md-4">
+            <img src = { `./assets/heroes/${ id }.jpg` } className = "card-img" alt = { superhero }/>
+          </div>
+          <div className = "col-md-8">
+            <div className = "card-body">
+              <h5 className = "card-title">{ superhero }</h5>
+              <p className = "card-text">{ alter_ego }</p>
+              {
+                ( alter_ego !== characters )
+                  && <p> {characters} </p>
+              }
+              <p className = "card-text">
+                <small className = "text-muted"> {first_appearance} </small>
+              </p>
+              <Link to = {`/hero/${ id }`}>
+                Mas...
+              </Link>
+            </div>
           </div>
         </div>
       </div>
