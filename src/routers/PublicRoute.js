@@ -8,20 +8,18 @@ export const PublicRoute = ({
   ...rest
 }) => {
 
-
   return (
     <Route {...rest}
-      component = { (props) => {
-        ( isAuthenticated )
+      component = { (props) => (
+        ( !isAuthenticated )
          ? (<Component { ...props } />)
-         : (<Redirect to = "/login" /> )
-      }}
+         : (<Redirect to = "/" /> )
+      )}
     />
   )
 }
 
 PublicRoute.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-  component: PropTypes.func.isRequired // el componente se trabaja como funcion ya que lo que recibimos y con lo que hemos estado trabajando
-                                       // ha sido con funcional components
+  component: PropTypes.func.isRequired
 }

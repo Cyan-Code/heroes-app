@@ -1,13 +1,13 @@
 import React, { useContext } from 'react'
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
+  Switch
 } from "react-router-dom";
 import { AuthContext } from '../auth/AuthContext';
 import { LoginScreen } from '../components/login/LoginScreen';
 import { DashboardRoutes } from './DashboardRoutes';
 import { PrivateRoute } from './PrivateRoute';
+import { PublicRoute } from './PublicRoute';
 
   export const AppRouter = () => {
 
@@ -17,11 +17,16 @@ import { PrivateRoute } from './PrivateRoute';
       <Router>
         <div>
           <Switch>
-            <Route exact path = "/login" component = { LoginScreen } />
-            <PrivateRoute
-              path = "/" // el path, caeria dentro del operador rest de este componente
-              component = { DashboardRoutes }
+            <PublicRoute
+              exact
+              path = "/login"
+              component = { LoginScreen }
               isAuthenticated = {user.logged}
+            />
+            <PrivateRoute
+              isAuthenticated = {user.logged}
+              component = { DashboardRoutes }
+              path = "/"
             />
           </Switch>
         </div>

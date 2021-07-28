@@ -8,14 +8,15 @@ export const PrivateRoute = ({
   ...rest // todos los demas atributos de los componentes como el exact o el path, van a almacenarse aqui para pasarlos a este componente
 }) => {
 
+  localStorage.setItem('lastPath', rest.location.pathname)
 
   return (
     <Route {...rest}
-      component = { (props) => { //esto es un component, que dentro de las {} tiene una callback que recibe las props del componente
+      component = { (props) => ( //esto es un component, que dentro de las {} tiene una callback que recibe las props del componente
         ( isAuthenticated )      // para renderizarlo de manera correcta || es como tener un componente que recibe otro en tanto la condicion se cumpla
          ? (<Component { ...props } />)
          : (<Redirect to = "/login" /> )
-      }}
+      )}
     />
   )
 }
