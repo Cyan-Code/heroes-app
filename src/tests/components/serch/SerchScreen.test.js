@@ -52,6 +52,19 @@ describe('Pruebas sonbre el componente <SearchScreen />', () => {
       </MemoryRouter>
     )
 
+    wrapper.find('input').simulate('change', {
+      target: {
+        name: 'searchText',
+        value: 'batman'
+      }
+    })
+
+    wrapper.find('form').prop('onSubmit')({
+      preventDefault(){}
+    })
+
+    expect( history.push ).toHaveBeenCalledWith(`?=batman`)
+
   })
   
   
