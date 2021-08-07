@@ -55,7 +55,6 @@ export const SerchScreen = ({history}) => {
         <div className="col-7">
           <h4> Results </h4>
           <hr />
-
           {
             (q === '')
             &&
@@ -63,7 +62,6 @@ export const SerchScreen = ({history}) => {
               Serch a Hero!
             </div>
           }
-
           {
             (q !== '' && heroesFiltered.length === 0)
               &&
@@ -71,7 +69,6 @@ export const SerchScreen = ({history}) => {
                 This is no a hero: {q}
               </div>
           }
-
           {
             heroesFiltered.map( hero => (
               <HeroCard
@@ -83,7 +80,6 @@ export const SerchScreen = ({history}) => {
         </div>
       </div>
       <div>
-
       </div>
     </div>
   )
