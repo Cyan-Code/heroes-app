@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const heroImages = ('../../assets/heroes', true)
+const heroImages = require.context('../../assets/heroes', true)
 
 export const HeroCard = ({ // para recibir todas estas propiedades de manera que no se alargue el cod: ver HerloList
     id,
